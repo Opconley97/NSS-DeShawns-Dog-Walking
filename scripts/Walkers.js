@@ -1,6 +1,10 @@
 import { getWalkers } from "./database.js"
+import { getWalkerCities } from "./database.js"
+import { getCities } from "./database.js"
 
-const walkers = getWalkers()
+const walkerCities = getWalkerCities();
+const cities = getCities();
+const walkers = getWalkers();
 
 
 export const Walkers = () => {
@@ -51,17 +55,18 @@ document.addEventListener(
                 Now that you have the primary key of a walker object,
                 find the whole object by iterating the walkers array.
             */
-            for (const walker of walkers) {
-
-                /*
-                    Compare the primary key of each walker to the one
-                    you have. As soon as you find the right one, display
-                    the window alert message.
-                */
-                if (walker.id === parseInt(walkerId)) {
-                    window.alert(`${walker.name} services ${walker.city}`)
+            for (const walkerCity of walkerCities) {
+                if (walkerCity.walkerId === parseInt(walkerId)) {
+                    for (const city of cities) {
+                        if (walkerCity.cityId === city.id) {
+                            for (const walker of walkers) {
+                                if (walker.id === parseInt(walkerId)) {
+                                window.alert(`${walker.name} services ${city.name}`)
+                            }
+                        }
+                        }
+                    }
                 }
             }
         }
-    }
-)
+    })
