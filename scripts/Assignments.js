@@ -1,14 +1,9 @@
 import { getPets, getWalkers, getCities, getWalkerCities} from "./database.js"
 
-// Get copy of state for use in this module
-
 const walkerCities = getWalkerCities();
 const cities = getCities();
 const pets = getPets();
 const walkers = getWalkers();
-
-
-// Function whose responsibility is to find the walker assigned to a pet
 
 export const Assignments = () => {
     let assignmentHTML = ""
